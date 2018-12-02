@@ -79,6 +79,19 @@ docker-compose ps
 docker-compose down
 ```
 
+```
+docker ps -a               # Lists containers (and tells you which images they are spun from)
+docker images              # Lists images  
+docker rm <container_id>   # Removes a container
+
+docker rmi <image_id>      # Removes an image 
+                           # Will fail if there is a running instance of that image i.e. container
+
+docker rmi -f <image_id>   # Forces removal of image even if it is referenced in multiple repositories, 
+                           # i.e. same image id given multiple names/tags 
+                           # Will still fail if there is a docker container referencing image
+```
+
 Если у вас всё получилось будем благодарны за звёздочку :)  
 Ошибки ждём в [issue](https://github.com/bitrixdock/bitrixdock/issues)  
 Приятной работы!  
