@@ -57,7 +57,7 @@ MYSQL_DATABASE=bitrix      # Имя базы данных
 MYSQL_USER=bitrix          # Пользователь базы данных
 MYSQL_PASSWORD=123         # Пароль для доступа к базе данных
 MYSQL_ROOT_PASSWORD=123    # Пароль для пользователя root от базы данных
-INTERFACE=0.0.0.0          # На данный интерфейс будут проксироваться порты
+INTERFACE=0.0.0.0          # На данный интерфейс будут проксироваться порты `ip a`
 SITE_PATH=/var/www/bitrix  # Путь к директории Вашего сайта
 
 ```
@@ -69,6 +69,15 @@ docker-compose up -d
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
 Откройте IP машины в браузере.
+
+- Подключение к контейнеру web_server.
+```docker-compose exec web_server bash```
+
+```
+docker-compose -h
+docker-compose ps
+docker-compose down
+```
 
 Если у вас всё получилось будем благодарны за звёздочку :)  
 Ошибки ждём в [issue](https://github.com/bitrixdock/bitrixdock/issues)  

@@ -2,3 +2,8 @@
 /logs
 /data
 .env
+
+/www/bitrix/*
+!/www/bitrix/local
+!/www/bitrix/bitrixsetup.php
+!/www/bitrix/restore.php
