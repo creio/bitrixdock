@@ -44,6 +44,18 @@ services:
         networks:
             - bitrix
         restart: always
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        ports:
+            - '${INTERFACE}:8080:80'
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        depends_on:
+            - mysql
+        networks:
+            - bitrix
+        restart: always
     memcached:
         image: memcached:1.5-alpine
         container_name: memcached
