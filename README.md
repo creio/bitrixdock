@@ -1,5 +1,3 @@
-![Alt text](assets/logo.jpg?raw=true "Bxdocker")
-
 # Bxdocker
 Bxdocker позволяет легко и просто запускать **Bitrix CMS** на **Docker**.
 
