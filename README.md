@@ -57,11 +57,19 @@ MYSQL_PASSWORD=123         # Пароль для доступа к базе да
 MYSQL_ROOT_PASSWORD=123    # Пароль для пользователя root от базы данных
 INTERFACE=0.0.0.0          # На данный интерфейс будут проксироваться порты `ip a`
 SITE_PATH=/var/www/bitrix  # Путь к директории Вашего сайта
+```
 
+- Запустите docker.service
+```bash
+sudo systemctl start docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl stop docker
+sudo systemctl status docker
 ```
 
 - Запустите bxdocker
-```
+```bash
 docker-compose up -d
 ```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
@@ -84,16 +92,17 @@ docker-compose down
 ```
 
 ```
-docker ps -a               # Lists containers (and tells you which images they are spun from)
-docker images              # Lists images  
-docker rm <container_id>   # Removes a container
+docker ps -a                   # Lists containers (and tells you which images they are spun from)
 
-docker rmi <image_id>      # Removes an image 
-                           # Will fail if there is a running instance of that image i.e. container
+docker rm <container_id>       # Removes a container
+docker rm $(docker ps -a -q)   # delete all stopped containers with
+docker kill $(docker ps -q)    # kill all running containers with
 
-docker rmi -f <image_id>   # Forces removal of image even if it is referenced in multiple repositories, 
-                           # i.e. same image id given multiple names/tags 
-                           # Will still fail if there is a docker container referencing image
+docker images                  # Lists images
+
+docker rmi <image_id>          # Removes an image
+docker rmi -f <image_id>       # Forces removal
+docker rmi $(docker images -q) # delete all images with
 ```
 
 
@@ -113,11 +122,11 @@ docker rmi -f <image_id>   # Forces removal of image even if it is referenced in
 [bitrix_server_test.php](http://dev.1c-bitrix.ru/download/scripts/bitrix_server_test.php)
 
 ## Отличие от виртуальной машины Битрикс
-Виртуальная машина от разработчиков битрикс решает ту же задачу, что и BitrixDock - предоставляет готовое окружение. Разница лишь в том, что Docker намного удобнее, проще и легче в поддержке.
+Виртуальная машина от разработчиков битрикс решает ту же задачу, что и Bxdocker - предоставляет готовое окружение. Разница лишь в том, что Docker намного удобнее, проще и легче в поддержке.
 
 Как только вы запускаете виртуалку, Docker сервисы автоматически стартуют, т.е. вы запускаете свой минихостинг для проекта и он сразу доступен.
 
-Если у вас появится новый проект и поменяется окружение, достаточно скопировать чистую виртуалку (если вы на винде), скопировать папку BitrixDock, добавить или заменить сервисы и запустить.
+Если у вас появится новый проект и поменяется окружение, достаточно скопировать чистую виртуалку (если вы на винде), скопировать папку Bxdocker, добавить или заменить сервисы и запустить.
 
 P.S.
 Виртуальная машина от разработчиков битрикс на Apache, а у нас на Nginx, а он работает намного быстрее и кушает меньше памяти.
