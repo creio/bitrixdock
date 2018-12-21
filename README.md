@@ -43,10 +43,10 @@ git clone https://github.com/creio/bxdocker.git
 ```
 cp -f .env_template .env
 ```
-⚠️ Если у вас мак или windows, то удалите строчку /etc/localtime:/etc/localtime/:ro из docker-compose
+
+Если у вас мак или windows, то удалите строчку /etc/localtime:/etc/localtime/:ro из docker-compose
 
 По умолчнию используется nginx php7, эти настройки можно изменить в файле ```.env```. Также можно задать путь к каталогу с сайтом и параметры базы данных MySQL.
-
 
 ```
 PHP_VERSION=php7           # Версия php 
@@ -103,6 +103,8 @@ docker images                  # Lists images
 docker rmi <image_id>          # Removes an image
 docker rmi -f <image_id>       # Forces removal
 docker rmi $(docker images -q) # delete all images with
+
+docker network prune
 ```
 
 

@@ -84,7 +84,3 @@ services:
 networks:
     bitrix:
         driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 10.100.0.0/24
