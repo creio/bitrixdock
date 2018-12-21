@@ -104,6 +104,7 @@ docker rmi <image_id>          # Removes an image
 docker rmi -f <image_id>       # Forces removal
 docker rmi $(docker images -q) # delete all images with
 
+docker network ls
 docker network prune
 ```
 
