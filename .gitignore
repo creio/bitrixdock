@@ -4,5 +4,6 @@
 .env
 
 /www/bitrix/*
+!/www/bitrix/htmldev
 !/www/bitrix/local
 !/www/bitrix/index.php
