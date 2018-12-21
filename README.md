@@ -114,9 +114,7 @@ docker network prune
 - В настройках подключения требуется указывать имя сервиса, например для подключения к mysql нужно указывать "mysql", а не "localhost". Пример [конфига](configs/.settings.php)  с подклчюением к mysql и memcached.
 - Для загрузки резервной копии в контейнер используйте команду: ```cat /var/www/bitrix/backup.sql | docker exec -i mysql /usr/bin/mysql -u root -p123 bitrix```
 
-- phpMyAdmin
-
-Подключение по адресу `dev.loc:8080`.
+- phpMyAdmin на порту `:8080`
 
 ## Полезные скрипты
 

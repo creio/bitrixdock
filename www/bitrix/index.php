@@ -41,7 +41,7 @@ if ( isset( $_GET[ 'action' ] ) ) {
     body {
         height: 100%;
         width: 100%;
-        background: linear-gradient(to bottom, #957bbe 0%,#8e71bc 40%,#8867bc 100%);
+        background: #957bbe;
     }
     h1 {
         color: #fff;
@@ -55,28 +55,34 @@ if ( isset( $_GET[ 'action' ] ) ) {
         justify-content: center;
         align-items: center;
     }
+    a {
+        color: #0f17a4;
+    }
 </style>
 </head>
 <body>
-    <div class="wrap">
-        <h1>BitrixDock Online!</h1>
+    <div class="container wrap">
+        <h1>Bxdocker Online!</h1>
 
         <div>
             <?= $message ?>
         </div>
 
-        <p>
-            <a href="/?action=phpinfo" target="_blank">PHP info</a><br>
-            <a href="/?action=restore">Восстановить 1С-Битрикс</a>
-        </p>
-        <p>
-            Полезные скрипты:
-        </p>
-        <ul>
-            <li><a href="http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php">bitrixsetup.php</a></li>
-            <li><a href="http://www.1c-bitrix.ru/download/scripts/restore.php">restore.php</a></li>
-            <li><a href="http://dev.1c-bitrix.ru/download/scripts/bitrix_server_test.php">bitrix_server_test.php</a></li>
-        </ul>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li><a href="/?action=phpinfo" target="_blank">PHP info</a></li>
+                    <li><a href="/?action=restore">Восстановить 1С-Битрикс</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><a href="http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php">bitrixsetup.php</a></li>
+                    <li><a href="http://www.1c-bitrix.ru/download/scripts/restore.php">restore.php</a></li>
+                    <li><a href="http://dev.1c-bitrix.ru/download/scripts/bitrix_server_test.php">bitrix_server_test.php</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
