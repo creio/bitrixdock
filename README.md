@@ -72,6 +72,9 @@ sudo systemctl status docker
 ```bash
 docker-compose up -d
 docker-compose up -d --build
+
+docker-compose up --force-recreate --build
+docker image prune -f
 ```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
