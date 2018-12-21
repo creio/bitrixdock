@@ -71,6 +71,7 @@ sudo systemctl status docker
 - Запустите bxdocker
 ```bash
 docker-compose up -d
+docker-compose up -d --build
 ```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
