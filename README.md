@@ -18,11 +18,11 @@ Bxdocker облегчает разработку на Битрикс предо�
 
 ## Зависимости
 - Git
-```
+```bash
 apt-get install -y git
 ```
 - Docker & Docker-Compose
-```
+```bash
 cd /usr/local/src && wget -qO- https://get.docker.com/ | sh && \
 curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
 chmod +x /usr/local/bin/docker-compose && \
@@ -32,7 +32,7 @@ source ~/.bashrc
 
 ### Начало работы
 - Склонируйте репозиторий bxdocker
-```
+```bash
 git clone https://github.com/creio/bxdocker.git
 ```
 
@@ -40,15 +40,15 @@ git clone https://github.com/creio/bxdocker.git
 
 Скопируйте файл `.env_template` в `.env`
 
-```
+```bash
 cp -f .env_template .env
 ```
 
 Если у вас мак или windows, то удалите строчку /etc/localtime:/etc/localtime/:ro из docker-compose
 
-По умолчнию используется nginx php7, эти настройки можно изменить в файле ```.env```. Также можно задать путь к каталогу с сайтом и параметры базы данных MySQL.
+По умолчнию используется nginx php7, эти настройки можно изменить в файле `.env`. Также можно задать путь к каталогу с сайтом и параметры базы данных MySQL.
 
-```
+```bash
 PHP_VERSION=php7           # Версия php 
 WEB_SERVER_TYPE=nginx      # Веб-сервер nginx/apache
 MYSQL_DATABASE=bitrix      # Имя базы данных
@@ -68,12 +68,18 @@ sudo systemctl stop docker
 sudo systemctl status docker
 ```
 
-- Запустите bxdocker
+- Команды для работы.
 ```bash
-docker-compose up -d
+docker-compose -h
+docker-compose up -d                    # -d В режиме демона
 docker-compose up -d --build
 docker-compose up -d --force-recreate
 docker image prune -f
+docker-compose ps                       # Процессы
+docker-compose stop                     # Остановка
+docker-compose down                     # Остановка контейнеров
+docker-compose down --volumes           # Остановка и удаление контейнеров и сети
+docker-compose exec web_server bash     # Подключение к контейнеру web_server(консоль)
 ```
 Чтобы проверить, что все сервисы запустились посмотрите список процессов ```docker ps```.  
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
@@ -85,18 +91,8 @@ docker image prune -f
 127.0.0.1       dev.loc
 ```
 
-- Подключение к контейнеру web_server.
-```docker-compose exec web_server bash```
-
+- Команды docker.
 ```bash
-docker-compose -h
-docker-compose ps              # Процессы
-docker-compose stop            # Остановка
-docker-compose down            # Остановка контейнеров
-docker-compose down --volumes  # Остановка и удаление контейнеров и сети
-```
-
-```
 docker ps -a                   # Lists containers (and tells you which images they are spun from)
 
 docker rm <container_id>       # Removes a container
@@ -112,7 +108,6 @@ docker rmi $(docker images -q) # delete all images with
 docker network ls
 docker network prune
 ```
-
 
 ## Примечание
 - Если вы хотите начать с чистой установки Битрикса, скачайте файл [bitrixsetup.php](http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php) в папку с сайтом. По умолчанию стоит папка ```/var/www/bitrix/```
