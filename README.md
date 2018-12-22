@@ -90,8 +90,9 @@ docker image prune -f
 
 ```
 docker-compose -h
-docker-compose ps
-docker-compose down
+docker-compose ps              # Процессы
+docker-compose down            # Остановка
+docker-compose down --volumes  # Остановка и удаление контейнеров и сети
 ```
 
 ```
