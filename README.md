@@ -88,10 +88,11 @@ docker image prune -f
 - Подключение к контейнеру web_server.
 ```docker-compose exec web_server bash```
 
-```
+```bash
 docker-compose -h
 docker-compose ps              # Процессы
-docker-compose down            # Остановка
+docker-compose stop            # Остановка
+docker-compose down            # Остановка контейнеров
 docker-compose down --volumes  # Остановка и удаление контейнеров и сети
 ```
 
