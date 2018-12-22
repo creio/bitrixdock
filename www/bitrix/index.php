@@ -9,6 +9,23 @@ if ( isset( $_GET[ 'action' ] ) ) {
             exit();
             break;
         }
+        case 'bitrix_server_test': {
+            $path = $_SERVER[ 'DOCUMENT_ROOT' ] . DIRECTORY_SEPARATOR . 'bitrix_server_test.php';
+            $url = 'http://www.1c-bitrix.ru/download/scripts/bitrix_server_test.php';
+            if ( !file_exists( $path ) ) {
+                $data = file_get_contents( $url );
+                if ( $data === false || file_put_contents( $path, $data ) === false ) {
+                    $error = true;
+                }
+            }
+            if ( !$error ) {
+                header( 'Location: http://' . $_SERVER[ 'HTTP_HOST' ] . '/bitrix_server_test.php' );
+                exit();
+            } else {
+                $message = 'Не удалось получить файл bitrix_server_test.php';
+            }
+            break;
+        }
         case 'restore': {
             $path = $_SERVER[ 'DOCUMENT_ROOT' ] . DIRECTORY_SEPARATOR . 'restore.php';
             $url = 'http://www.1c-bitrix.ru/download/scripts/restore.php';
@@ -23,6 +40,23 @@ if ( isset( $_GET[ 'action' ] ) ) {
                 exit();
             } else {
                 $message = 'Не удалось получить файл restore.php';
+            }
+            break;
+        }
+        case 'bitrixsetup': {
+            $path = $_SERVER[ 'DOCUMENT_ROOT' ] . DIRECTORY_SEPARATOR . 'bitrixsetup.php';
+            $url = 'http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php';
+            if ( !file_exists( $path ) ) {
+                $data = file_get_contents( $url );
+                if ( $data === false || file_put_contents( $path, $data ) === false ) {
+                    $error = true;
+                }
+            }
+            if ( !$error ) {
+                header( 'Location: http://' . $_SERVER[ 'HTTP_HOST' ] . '/bitrixsetup.php' );
+                exit();
+            } else {
+                $message = 'Не удалось получить файл bitrixsetup.php';
             }
             break;
         }
@@ -72,16 +106,18 @@ if ( isset( $_GET[ 'action' ] ) ) {
             <div class="col">
                 <ul>
                     <li><a href="/?action=phpinfo" target="_blank">PHP info</a></li>
-                    <li><a href="/?action=restore">Восстановить 1С-Битрикс</a></li>
+                    <li><a href="/?action=bitrix_server_test" target="_blank">Bitrix Server Test</a></li>
+                    <li><a href="/?action=bitrixsetup">Install Bitrix</a></li>
+                    <li><a href="/?action=restore">Restore Bitrix</a></li>
                 </ul>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <ul>
                     <li><a href="http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php">bitrixsetup.php</a></li>
                     <li><a href="http://www.1c-bitrix.ru/download/scripts/restore.php">restore.php</a></li>
                     <li><a href="http://dev.1c-bitrix.ru/download/scripts/bitrix_server_test.php">bitrix_server_test.php</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
     
