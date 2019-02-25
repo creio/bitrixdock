@@ -56,7 +56,7 @@ MYSQL_USER=bitrix          # Пользователь базы данных
 MYSQL_PASSWORD=123         # Пароль для доступа к базе данных
 MYSQL_ROOT_PASSWORD=123    # Пароль для пользователя root от базы данных
 INTERFACE=0.0.0.0          # На данный интерфейс будут проксироваться порты `ip a`
-SITE_PATH=/var/www/bitrix  # Путь к директории Вашего сайта
+SITE_PATH=/var/www/bitrix  # !!!Путь к директории Вашего сайта
 ```
 
 - Запустите docker.service
