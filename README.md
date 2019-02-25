@@ -85,10 +85,10 @@ docker-compose exec web_server bash     # Подключение к контей
 Посмотрите все прослушиваемые порты, должны быть 80, 11211, 9000 ```netstat -plnt```.  
 Откройте IP машины в браузере.
 
-- Сайт будет доступен по адресу localhost `ip a`, если не указали INTERFACE. Чтобы сайт открывался по доменному имени, например, dev.loc, добавляем запись в файл /etc/hosts. https://wiki.archlinux.org/index.php/Network_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
+- Сайт будет доступен по адресу localhost `ip a`, если не указали INTERFACE. Чтобы сайт открывался по доменному имени, например, loc.dev, добавляем запись в файл /etc/hosts. https://wiki.archlinux.org/index.php/Network_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)
 
 ```
-127.0.0.1       dev.loc
+127.0.0.1       loc.dev
 ```
 
 - Команды docker.
