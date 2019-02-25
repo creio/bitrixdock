@@ -46,7 +46,9 @@ cp -f .env_template .env
 
 Если у вас мак или windows, то удалите строчку /etc/localtime:/etc/localtime/:ro из docker-compose
 
-По умолчнию используется nginx php7, эти настройки можно изменить в файле `.env`. Также можно задать путь к каталогу с сайтом и параметры базы данных MySQL.
+- По умолчнию используется nginx php7, эти настройки можно изменить в файле `.env`. Также можно задать путь к каталогу с сайтом и параметры базы данных MySQL.
+- В настройках подключения требуется указывать имя сервиса, например для подключения к mysql нужно указывать "mysql", а не "localhost". Пример [конфига](configs/.settings.php)  с подклчюением к mysql и memcached.
+- Если восстанавливаем сайт в старой кодировке, исправить в php конфигах. `mbstring.internal_encoding=ISO-8859-1` или `mbstring.func_overload=0`.
 
 ```bash
 PHP_VERSION=php7           # Версия php 
@@ -111,7 +113,6 @@ docker network prune
 
 ## Примечание
 - Если вы хотите начать с чистой установки Битрикса, скачайте файл [bitrixsetup.php](http://www.1c-bitrix.ru/download/scripts/bitrixsetup.php) в папку с сайтом. По умолчанию стоит папка ```/var/www/bitrix/```
-- В настройках подключения требуется указывать имя сервиса, например для подключения к mysql нужно указывать "mysql", а не "localhost". Пример [конфига](configs/.settings.php)  с подклчюением к mysql и memcached.
 - Для загрузки резервной копии в контейнер используйте команду: ```cat /var/www/bitrix/backup.sql | docker exec -i mysql /usr/bin/mysql -u root -p123 bitrix```
 
 - phpMyAdmin на порту `:8080`
